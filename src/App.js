@@ -37,12 +37,13 @@ class App extends Component {
 	}
 
 	render() {
-		const { showNote, notes } = this.state; /*object destructuring, equivalent to this.state.showNote <p>{this.state.showNote</p> */
+		const { showNote, notes, note } = this.state; /*object destructuring, equivalent to this.state.showNote <p>{this.state.showNote</p> */
 		return (
 		<div className="App">
 			<Nav toggleNote={this.toggleNote} showNote={showNote} /> 
 			{ showNote ? 
-				<Note /> 
+				<Note note={note}
+				/> 
 				: 
 				<List 
 					getNotes={this.getNotes} 
