@@ -52,17 +52,21 @@ class Note extends React.Component {
         
     }
 
-    renderTagsNote(note) {
-        return note.tags.map((tag, index) =>
-            <div className="tag" key={index}>
-                <span className="delete" >
-                    <i className="material-icons">delete</i>
-                </span>
-                {tag.name}
-            </div>
-
-        );
-
+    renderTags(note) {
+        if (note.tags) {
+             return note.tags.map((tag, index) =>
+                <div 
+                    className="tag" 
+                    key={index}
+                    onClick={(e) => this.props.deleteTag(note.id, tag.id)}
+                >
+                    <span className="delete" >
+                        <i className="material-icons">delete</i>
+                    </span>
+                    {tag.name}
+                </div>
+            );
+        }
     }
 
     render() {
@@ -93,7 +97,7 @@ class Note extends React.Component {
                         {this.renderTagForm(note)}
                     </div>
                     <div className="tag-list-container">
-                        {this.renderTagsNote(note)}
+                        {this.renderTags(note)}
                     </div>
                 </div>
             </div>
