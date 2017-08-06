@@ -63,6 +63,10 @@ class App extends Component {
 		this.setState({ newTag: true})
 	}
 
+	closeTagForm = () => {
+		this.setState({ newTag: false});
+	}
+
 	render() {
 		const { showNote, notes, note, newTag } = this.state; /*object destructuring, equivalent to this.state.showNote <p>{this.state.showNote</p> */
 		return (
@@ -73,7 +77,8 @@ class App extends Component {
 					note={note}
 					submitNote={this.submitNote}
 					showTagForm={this.showTagForm}
-					newTag={this.newTag}
+					newTag={newTag}
+					closeTagForm={this.closeTagForm}
 				/> 
 				: 
 				<List 
